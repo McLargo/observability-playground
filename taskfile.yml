@@ -1,0 +1,23 @@
+version: '3'
+
+tasks:
+
+  build:
+    desc: builds the services defined in the docker-compose file
+    dir: '{{.USER_WORKING_DIR}}'
+    cmd: docker compose up -d
+
+  clean:
+    desc: stops and removes the application, volumes, and networks
+    dir: '{{.USER_WORKING_DIR}}'
+    cmd: docker compose down
+
+  health:
+    desc: check all services are running
+    dir: '{{.USER_WORKING_DIR}}'
+    cmds:
+      - curl -s http://localhost:9090/metrics | grep -q 'prometheus_build_info'
+      - curl -s http://localhost:9091/metrics | grep -q 'pushgateway_build_info'
+      - curl -s http://localhost:9093/metrics | grep -q 'alertmanager_build_info'
+      - curl -s http://localhost:3000/api/health | grep -q 'ok'
+    on_error: 'echo "Health check failed"'
