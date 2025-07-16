@@ -21,3 +21,13 @@ tasks:
       - curl -s http://localhost:9093/metrics | grep -q 'alertmanager_build_info'
       - curl -s http://localhost:3000/api/health | grep -q 'ok'
     on_error: 'echo "Health check failed"'
+
+  counter-prometheus-client:
+    desc: run the counter example using the Prometheus client
+    dir: '{{.USER_WORKING_DIR}}/src'
+    cmd: uv run pc_counter_metrics.py
+
+  counter-push-gateway:
+    desc: run the counter example using the Push Gateway
+    dir: '{{.USER_WORKING_DIR}}/src'
+    cmd: uv run pg_counter_metrics.py

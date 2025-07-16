@@ -12,6 +12,8 @@ services:
       - '--config.file=/etc/prometheus/prometheus.yml'
     networks:
       - observability
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
   pushgateway:
     image: prom/pushgateway:latest
