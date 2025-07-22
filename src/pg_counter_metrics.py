@@ -35,7 +35,7 @@ if __name__ == "__main__":
         push_to_gateway(
             "localhost:9091",
             job="push_gateway_counter_group",
-            grouping_key={"instance":  str(uuid.uuid4())},
+            grouping_key={"instance": str(uuid.uuid4())},
             registry=registry,
         )
         print("Metrics pushed to Pushgateway.")
