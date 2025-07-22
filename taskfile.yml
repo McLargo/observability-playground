@@ -31,3 +31,13 @@ tasks:
     desc: run the counter example using the Push Gateway
     dir: '{{.USER_WORKING_DIR}}/src'
     cmd: uv run pg_counter_metrics.py
+
+  gauge-laptop-usage:
+    desc: run the gauge example using the Push Gateway
+    dir: '{{.USER_WORKING_DIR}}/src'
+    cmd: uv run gauge_metrics.py
+
+  histogram-database-latency:
+    desc: run the histogram example using the Push Gateway
+    dir: '{{.USER_WORKING_DIR}}/src'
+    cmd: uv run histogram_metrics.py
