@@ -1,12 +1,32 @@
 groups:
   - name: demo_alerts
     rules:
-      - alert: HighDataProcessingFailures
+      - alert: HighCPUUsage
         expr: |
-          increase(demo_push_gateway_process_events_total{event_type="EventType.DATA_PROCESSING", status="EventStatus.FAILURE"}[1m]) == 0
-        for: 0m
+          demo_cpu_utilization_percent > 80
+        for: 5m
         labels:
           severity: warning
         annotations:
-          summary: "High number of data processing failures detected"
-          description: "There have been more than 0 data processing failures in the last 1 minute."
+          summary: "High CPU usage detected"
+          description: "CPU usage has exceeded 80%."
+
+      - alert: HighMemoryUsage
+        expr: |
+          demo_memory_free_bytes < 1000000000
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High Memory usage detected"
+          description: "Memory usage has fallen below 1GB."
+
+      - alert: HighFailureRate
+        expr: |
+          increase(demo_prometheus_client_process_events_total{event_type="EventType.DATA_PROCESSING", status="EventStatus.FAILURE"}[15m]) > 0
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High Failure Rate Detected"
+          description: "Data processing failures detected."
