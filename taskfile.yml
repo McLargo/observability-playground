@@ -1,3 +1,4 @@
+---
 version: '3'
 
 tasks:
@@ -18,7 +19,7 @@ tasks:
     cmds:
       - curl -s http://localhost:9090/metrics | grep -q 'prometheus_build_info'
       - curl -s http://localhost:9091/metrics | grep -q 'pushgateway_build_info'
-      - curl -s http://localhost:9093/metrics | grep -q 'alertmanager_build_info'
+      - curl -s http://localhost:9093/metrics | grep -q 'alertmanager_build_info'  # yamllint disable-line rule:line-length
       - curl -s http://localhost:3000/api/health | grep -q 'ok'
     on_error: 'echo "Health check failed"'
 

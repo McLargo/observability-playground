@@ -3,8 +3,7 @@ import uuid
 
 from prometheus_client import CollectorRegistry, Counter, push_to_gateway
 
-from enum_types import EventType, EventStatus
-
+from enum_types import EventStatus, EventType
 
 registry = CollectorRegistry()
 
@@ -15,7 +14,9 @@ demo_count = Counter(
     registry=registry,
 )
 
+
 def init_metrics():
+    """Initializes the metrics by setting initial values."""
     demo_count.labels(event_type=EventType.LOGIN, status=EventStatus.SUCCESS).inc(0)
     demo_count.labels(event_type=EventType.LOGIN, status=EventStatus.FAILURE).inc(0)
     demo_count.labels(event_type=EventType.DATA_PROCESSING, status=EventStatus.SUCCESS).inc(0)
@@ -27,9 +28,7 @@ def init_metrics():
 
 
 def process_event(event_type, status):
-    """
-    Simulates processing an event in the push_gateway application.
-    """
+    """Simulate processing an event in the push_gateway application."""
     print(f"Event simulation | demo_push_gateway_process_events_total | {event_type} | {status}")
     demo_count.labels(event_type=event_type, status=status).inc()
 

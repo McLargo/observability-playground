@@ -1,3 +1,4 @@
+---
 global:
   resolve_timeout: 5m
 
@@ -6,9 +7,9 @@ route:
   group_wait: 30s
   group_interval: 5m
   repeat_interval: 1h
-  receiver: 'web_hook' # may require some tunning based on your setup
+  receiver: 'web_hook'  # require some tunning
 
 receivers:
   - name: 'web_hook'
     webhook_configs:
-      - url: 'http://example.com/alerts' # may require some tunning based on your setup
+      - url: 'http://example.com/alerts'  # require some tunning

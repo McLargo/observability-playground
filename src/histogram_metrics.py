@@ -1,9 +1,9 @@
 import random
 import time
 
-from enum_types import QueryType, SchemaType
 from prometheus_client import Histogram, start_http_server
 
+from enum_types import QueryType, SchemaType
 
 histogram = Histogram(
     "demo_db_query_latency_seconds",

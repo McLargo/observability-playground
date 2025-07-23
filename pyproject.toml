@@ -5,3 +5,30 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = []
+
+[tool.ruff]
+line-length = 120
+exclude = [
+  ".git",
+  "__pycache__",
+  ".tox",
+  ".mypy_cache",
+  ".venv",
+]
+lint.select = [
+  "F",
+  "E",
+  "W",
+  "I",
+  "N",
+  "COM",
+  "DTZ",
+  "G",
+  "Q",
+  "RET",
+  "ARG",
+]
+
+[tool.ruff.lint.flake8-quotes]
+inline-quotes = "double"
+docstring-quotes = "double"

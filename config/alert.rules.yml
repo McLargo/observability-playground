@@ -1,9 +1,9 @@
+---
 groups:
   - name: demo_alerts
     rules:
       - alert: HighCPUUsage
-        expr: |
-          demo_cpu_utilization_percent > 80
+        expr: demo_cpu_utilization_percent > 80
         for: 5m
         labels:
           severity: warning
@@ -12,8 +12,7 @@ groups:
           description: "CPU usage has exceeded 80%."
 
       - alert: HighMemoryUsage
-        expr: |
-          demo_memory_free_bytes < 1000000000
+        expr: demo_memory_free_bytes < 1000000000
         for: 5m
         labels:
           severity: warning
@@ -22,8 +21,7 @@ groups:
           description: "Memory usage has fallen below 1GB."
 
       - alert: HighFailureRate
-        expr: |
-          increase(demo_prometheus_client_process_events_total{event_type="EventType.DATA_PROCESSING", status="EventStatus.FAILURE"}[15m]) > 0
+        expr: increase(demo_prometheus_client_process_events_total{event_type="EventType.DATA_PROCESSING", status="EventStatus.FAILURE"}[15m]) > 0  # yamllint disable-line rule:line-length
         for: 5m
         labels:
           severity: warning
