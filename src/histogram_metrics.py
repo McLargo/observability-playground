@@ -1,7 +1,7 @@
 import random
 import time
 
-from db_enum import QueryType, SchemaType
+from enum_types import QueryType, SchemaType
 from prometheus_client import Histogram, start_http_server
 
 

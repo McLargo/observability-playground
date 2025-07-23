@@ -2,7 +2,7 @@ import uuid
 
 from prometheus_client import CollectorRegistry, Counter, push_to_gateway
 
-from event_enum import EventType, EventStatus
+from enum_types import EventType, EventStatus
 
 
 registry = CollectorRegistry()

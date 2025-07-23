@@ -2,7 +2,7 @@ import time
 
 from prometheus_client import Counter, start_http_server
 
-from event_enum import EventType, EventStatus
+from enum_types import EventType, EventStatus
 
 demo_count = Counter(
     "demo_prometheus_client_process_events_total",
